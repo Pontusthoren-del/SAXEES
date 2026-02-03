@@ -44,6 +44,7 @@ namespace SAXEES
                     Console.ReadKey();
                     break;
                 case 3:
+                    Console.Clear();
                     VisaTillgängligPersonal();
                     Console.ReadKey();
                     break;
