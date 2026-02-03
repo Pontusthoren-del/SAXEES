@@ -8,18 +8,14 @@ namespace SAXEES
 {
     internal class Treatments
     {
-        private UI = _ui;
+        //private UI _ui;
 
-        public Treatments()
-        {
-            _ui = new UI();
-        }
+        //public Treatments()
+        //{
+        //    _ui = new UI();
+        //}
         public bool VisaBenhandlingsmeny()
         {
-            int menyVal;
-            int min = 1;
-            int max = 4;
-
             Console.WriteLine("\tBEHANDLINGSMENY\n\n");
 
             Console.WriteLine("Ange siffran för ditt val och tryck enter:");
@@ -28,19 +24,14 @@ namespace SAXEES
             Console.WriteLine("2. Visa priser");
             Console.WriteLine("3. Visa tillgänglig personal på de olika behandlingarna");
             Console.WriteLine("4. Tillbaka till huvudmeny");
-
-            while (!int.TryParse(Console.ReadLine(), out menyVal) || menyVal < min || menyVal > max)
-            {
-                Console.WriteLine("Vänligen ange ett tal som alternativ, mellan 1-4!");
-            }
-
-
-            return Behandlingsmeny(menyVal);
+            int menyval = UI.DittValNR("Ditt val");
+                      
+            return Behandlingsmeny(menyval);
         }
 
-        public bool Behandlingsmeny(int menyVal)
+        public bool Behandlingsmeny(int menyval)
         {
-            switch (menyVal)
+            switch (menyval)
             {
                 case 1:
                     Console.Clear();
@@ -53,15 +44,37 @@ namespace SAXEES
                     Console.ReadKey();
                     break;
                 case 3:
+                    Console.Clear();
                     VisaTillgängligPersonal();
                     Console.ReadKey();
                     break;
                 case 4:
-                    _ui.VisaHuvudmeny();
+                    UI.StartaHuvudmenyn();
                     return false;
 
             }
             return true;
+        }
+
+        public void VisaBehandlingar()
+        {
+            Console.WriteLine("BEHANDLINGAR");
+            Console.WriteLine();
+            //TreatmentData.VisaBehandlingar();
+        }
+
+        public void VisaPriser()
+        {
+            Console.WriteLine("PRISER");
+            Console.WriteLine();
+            //TreatmentData.VisaPriser();
+        }
+
+        public void VisaTillgängligPersonal()
+        {
+            Console.WriteLine("PERSONAL FÖR VARJE BEHANDLING");
+            Console.WriteLine();
+            //TreatmentData.VisaTillgängligPersonal();
         }
     }
 }
